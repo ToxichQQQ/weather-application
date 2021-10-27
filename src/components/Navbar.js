@@ -39,9 +39,13 @@ export const Navbar = ({ setSelectedCity }) => {
       <Grid item xs={6}>
         <Grid container justifyContent="flex-end">
           <TextField
-            onChange={(e) => setSearchValue(e.currentTarget.value)}
+            onChange={(e) =>{
+              const value = e.currentTarget.value.replace(/[^a-zA-Z ]+/g, '')
+              setSearchValue(value)
+            }}
             label="Find the city"
             size="small"
+            value={searchValue}
           />
           <Button
             color="primary"

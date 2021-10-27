@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, Grid, makeStyles } from "@material-ui/core";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
+import moment from "moment";
 
 const useStyles = makeStyles((them) => ({
   container: {
@@ -19,6 +20,14 @@ const useStyles = makeStyles((them) => ({
 export const MainContent = ({ cityInfo }) => {
   const classes = useStyles();
 
+  const getWeatherInfo = () => {
+    return {
+      temp: (cityInfo.main.temp - 273.15).toFixed(1),
+      city: cityInfo.name + ' ' + cityInfo.sys.country,
+      wind: "Wind - " + cityInfo.wind.speed.toFixed(1) + " meter per second",
+    };
+  };
+
   return (
     <Grid
       container
@@ -36,13 +45,12 @@ export const MainContent = ({ cityInfo }) => {
         alignItems="center"
         className={classes.mainContent}
       >
-        <Grid item>{(cityInfo.main.temp - 273.15).toFixed(1)}&#8451;</Grid>
+        <Grid item>{getWeatherInfo().temp}&#8451;</Grid>
         <Grid item>
-          {cityInfo.name},{cityInfo.sys.country}
+          {getWeatherInfo().city}
         </Grid>
         <Grid item>
-          {cityInfo.weather[0].main},Wind - {cityInfo.wind.speed.toFixed(1)}{" "}
-          meter per second
+          {getWeatherInfo().wind}
         </Grid>
       </Grid>
     </Grid>

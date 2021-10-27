@@ -27,7 +27,8 @@ export const App = () => {
         setCityInfo(data);
         setLocation({ lat: data.coord.lat, lon: data.coord.lon });
         setLoading(false);
-      });
+      })
+        .catch(err => alert('Error'))
   };
 
   useEffect(() => {

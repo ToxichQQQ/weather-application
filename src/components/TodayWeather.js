@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Grid, Table, TableCell, TableHead, TableRow } from "@material-ui/core";
 import { Paper, TableBody, TableContainer, Typography } from "@mui/material";
 import moment from "moment";
+import Iframe from 'react-iframe'
 import { API_KEY } from "../config";
 
 export const TodayWeather = ({ location, setCityInfo, cityInfo }) => {
@@ -18,7 +19,8 @@ export const TodayWeather = ({ location, setCityInfo, cityInfo }) => {
         setDate(moment.unix(data.daily[0].dt).format("MMMM Do "));
         setWeekWeather(data);
         setLoading(false);
-      });
+      })
+  .catch(err => alert('Error'))
   }, [location]);
 
   const getWeatherInfoByTime = (i) => {
@@ -84,8 +86,16 @@ export const TodayWeather = ({ location, setCityInfo, cityInfo }) => {
           </Grid>
         </Grid>
       )}
-
-      <Grid item></Grid>
+      <Grid item id='map'>
+         {/* start work on integration Google Map */}
+          <Iframe url="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d22944.721647941016!2d43.0615825!3d44.040192!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sru!2sru!4v1635356227359!5m2!1sru!2sru"
+                  position="absolute"
+                  width="300px"
+                  id="myId"
+                  className="myClassname"
+                  height="300px"
+                  styles={{height: "25px"}}/>
+      </Grid>
     </Grid>
   );
 };
