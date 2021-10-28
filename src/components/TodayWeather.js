@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { Grid, Table, TableCell, TableHead, TableRow } from "@material-ui/core";
 import { Paper, TableBody, TableContainer, Typography } from "@mui/material";
 import moment from "moment";
-import Iframe from 'react-iframe'
+import Iframe from "react-iframe";
 import { API_KEY } from "../config";
 
-export const TodayWeather = ({ location, setCityInfo, cityInfo }) => {
+export const TodayWeather = ({ location, isToday }) => {
   const [weekWeather, setWeekWeather] = useState();
   const [date, setDate] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -16,11 +16,11 @@ export const TodayWeather = ({ location, setCityInfo, cityInfo }) => {
     )
       .then((response) => response.json())
       .then((data) => {
-        setDate(moment.unix(data.daily[0].dt).format("MMMM Do "));
+        setDate(moment.unix(data.daily[isToday ? 0 : 1].dt).format("MMMM Do "));
         setWeekWeather(data);
         setLoading(false);
       })
-  .catch(err => alert('Error'))
+      .catch((err) => alert("Error"));
   }, [location]);
 
   const getWeatherInfoByTime = (i) => {
@@ -31,14 +31,13 @@ export const TodayWeather = ({ location, setCityInfo, cityInfo }) => {
       wind: "Wind - " + weekWeather.hourly[i].wind_speed + " meter per second",
     };
   };
-
   return (
     <Grid>
       {!loading && (
         <Grid item>
           <Grid item>
             <Typography variant="h4" component="h4">
-              Today
+              {isToday ? "Today" : "Tomorrow"}
             </Typography>
             <p>{date}</p>
           </Grid>
@@ -57,27 +56,33 @@ export const TodayWeather = ({ location, setCityInfo, cityInfo }) => {
                 </TableHead>
                 <TableBody>
                   <TableRow>
-                    <TableCell>{getWeatherInfoByTime(3).time}</TableCell>
                     <TableCell>
-                      {getWeatherInfoByTime(3).temp}&#8451;{" "}
-                      {getWeatherInfoByTime(3).desc}{" "}
-                      {getWeatherInfoByTime(3).wind}
+                      {isToday ? getWeatherInfoByTime(3).time : "10:00"}
+                    </TableCell>
+                    <TableCell>
+                      {getWeatherInfoByTime(isToday ? 3 : 24).temp}&#8451;{" "}
+                      {getWeatherInfoByTime(isToday ? 3 : 24).desc}{" "}
+                      {getWeatherInfoByTime(isToday ? 3 : 24).wind}
                     </TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell>{getWeatherInfoByTime(6).time}</TableCell>
                     <TableCell>
-                      {getWeatherInfoByTime(6).temp}&#8451;{" "}
-                      {getWeatherInfoByTime(6).desc}{" "}
-                      {getWeatherInfoByTime(6).wind}
+                      {isToday ? getWeatherInfoByTime(6).time : "15:00"}
+                    </TableCell>
+                    <TableCell>
+                      {getWeatherInfoByTime(isToday ? 6 : 27).temp}&#8451;{" "}
+                      {getWeatherInfoByTime(isToday ? 3 : 27).desc}{" "}
+                      {getWeatherInfoByTime(isToday ? 3 : 27).wind}
                     </TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell>{getWeatherInfoByTime(9).time}</TableCell>
                     <TableCell>
-                      {getWeatherInfoByTime(9).temp}&#8451;{" "}
-                      {getWeatherInfoByTime(9).desc}{" "}
-                      {getWeatherInfoByTime(9).wind}
+                      {isToday ? getWeatherInfoByTime(9).time : "19:00"}
+                    </TableCell>
+                    <TableCell>
+                      {getWeatherInfoByTime(isToday ? 9 : 36).temp}&#8451;{" "}
+                      {getWeatherInfoByTime(isToday ? 9 : 36).desc}{" "}
+                      {getWeatherInfoByTime(isToday ? 9 : 36).wind}
                     </TableCell>
                   </TableRow>
                 </TableBody>
@@ -86,16 +91,6 @@ export const TodayWeather = ({ location, setCityInfo, cityInfo }) => {
           </Grid>
         </Grid>
       )}
-      <Grid item id='map'>
-         {/* start work on integration Google Map */}
-          <Iframe url="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d22944.721647941016!2d43.0615825!3d44.040192!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sru!2sru!4v1635356227359!5m2!1sru!2sru"
-                  position="absolute"
-                  width="300px"
-                  id="myId"
-                  className="myClassname"
-                  height="300px"
-                  styles={{height: "25px"}}/>
-      </Grid>
     </Grid>
   );
 };

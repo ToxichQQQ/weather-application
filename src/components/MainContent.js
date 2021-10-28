@@ -17,13 +17,13 @@ const useStyles = makeStyles((them) => ({
   },
 }));
 
-export const MainContent = ({ cityInfo }) => {
+export const MainContent = ({ cityInfo, saveNewCity }) => {
   const classes = useStyles();
 
   const getWeatherInfo = () => {
     return {
       temp: (cityInfo.main.temp - 273.15).toFixed(1),
-      city: cityInfo.name + ' ' + cityInfo.sys.country,
+      city: cityInfo.name + " " + cityInfo.sys.country,
       wind: "Wind - " + cityInfo.wind.speed.toFixed(1) + " meter per second",
     };
   };
@@ -35,7 +35,7 @@ export const MainContent = ({ cityInfo }) => {
       alignItems="center"
       className={classes.container}
     >
-      <Button className={classes.addCityButton}>
+      <Button className={classes.addCityButton} onClick={() => saveNewCity()}>
         <AddCircleOutlineIcon />
       </Button>
       <Grid
@@ -46,12 +46,8 @@ export const MainContent = ({ cityInfo }) => {
         className={classes.mainContent}
       >
         <Grid item>{getWeatherInfo().temp}&#8451;</Grid>
-        <Grid item>
-          {getWeatherInfo().city}
-        </Grid>
-        <Grid item>
-          {getWeatherInfo().wind}
-        </Grid>
+        <Grid item>{getWeatherInfo().city}</Grid>
+        <Grid item>{getWeatherInfo().wind}</Grid>
       </Grid>
     </Grid>
   );
