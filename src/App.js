@@ -6,7 +6,8 @@ import { TodayWeather } from "./components/TodayWeather";
 import { API_KEY } from "./config";
 import { Route } from "react-router-dom";
 import { WeekWeather } from "./components/WeekWeather";
-
+import {RegistrationPage} from  "./pages/RegistrationPage"
+import {LoginPage} from "./pages/LoginPage";
 export const App = () => {
   const [selectedCity, setSelectedCity] = useState("Moscow");
   const [cityInfo, setCityInfo] = useState([]);
@@ -54,7 +55,7 @@ export const App = () => {
         setLocation({ lat: data.coord.lat, lon: data.coord.lon });
         setLoading(false);
       })
-      .catch((err) => alert("Error"));
+      .catch();
   };
 
   useEffect(() => {
@@ -82,9 +83,15 @@ export const App = () => {
     !loading &&
     !isError && (
       <div>
-        <Navbar setSelectedCity={setSelectedCity} />
-        <MainContent cityInfo={cityInfo} saveNewCity={saveNewCity} />
-        <Route exact path="/">
+        <Route path="/registration">
+          <RegistrationPage/>
+        </Route>
+        <Route path="/login">
+          <LoginPage/>
+        </Route>
+        <Route exact path="/main">
+          <Navbar  setSelectedCity={setSelectedCity} />
+          <MainContent cityInfo={cityInfo} saveNewCity={saveNewCity} />
           <CitiesList
             setSelectedCity={setSelectedCity}
             savedCities={savedCities}
@@ -93,6 +100,8 @@ export const App = () => {
           />
         </Route>
         <Route path="/today">
+          <Navbar setSelectedCity={setSelectedCity} />
+          <MainContent cityInfo={cityInfo} saveNewCity={saveNewCity} />
           <TodayWeather
             getCityInformation={getCityInformation}
             location={location}
@@ -102,6 +111,8 @@ export const App = () => {
           />
         </Route>
         <Route path="/tomorrow">
+          <Navbar setSelectedCity={setSelectedCity} />
+          <MainContent cityInfo={cityInfo} saveNewCity={saveNewCity} />
           <TodayWeather
             getCityInformation={getCityInformation}
             location={location}
@@ -111,6 +122,8 @@ export const App = () => {
           />
         </Route>
         <Route path="/week">
+          <Navbar setSelectedCity={setSelectedCity} />
+          <MainContent cityInfo={cityInfo} saveNewCity={saveNewCity} />
           <WeekWeather
             getCityInformation={getCityInformation}
             location={location}

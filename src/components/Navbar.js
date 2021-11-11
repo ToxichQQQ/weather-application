@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import { Button, Grid, TextField } from "@mui/material";
 import { NavLink } from "react-router-dom";
 import { makeStyles } from "@material-ui/core";
@@ -17,9 +17,18 @@ const useStyles = makeStyles((them) => ({
     marginTop: 5,
   },
 }));
-export const Navbar = ({ setSelectedCity }) => {
+export const Navbar = ({ setSelectedCity}) => {
   const [searchValue, setSearchValue] = useState("");
   const classes = useStyles();
+  const [token, setToken] = useState(localStorage.getItem('token') || undefined)
+
+  useEffect(()=>{
+    if (!token){
+      window.location.href = 'login'
+    }
+  },[token])
+
+
   return (
     <Grid
       container
@@ -29,7 +38,7 @@ export const Navbar = ({ setSelectedCity }) => {
     >
       <Grid item xs={3}>
         <Grid container justifyContent="space-between" alignItems="center">
-          <NavLink to="/" className={classes.navLinkItem}>
+          <NavLink to="/main" className={classes.navLinkItem}>
             <HomeIcon fontSize="large" className={classes.homeIcon} />
           </NavLink>
           <NavLink to="/today" className={classes.navLinkItem}>

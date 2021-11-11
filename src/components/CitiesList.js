@@ -37,7 +37,6 @@ const useStyles = makeStyles((them) => ({
 
 export const CitiesList = ({
   setSelectedCity,
-  setSavedCities,
   savedCities,
   clearCity,
 }) => {
