@@ -5,18 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="afee9076-d05c-41a8-a418-2f2fe6c9549e" name="Changes" comment="DR-2001: created weather app">
-      <change afterPath="$PROJECT_DIR$/src/images/auth_bg.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/localhost.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/LoginPage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/RegistrationPage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/validation.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/CitiesList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CitiesList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/MainContent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MainContent.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Navbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Navbar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/TodayWeather.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TodayWeather.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/localhost.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/localhost.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/LoginPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/LoginPage.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +69,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/images" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -129,7 +125,15 @@
       <workItem from="1635972687331" duration="919000" />
       <workItem from="1636102032369" duration="9039000" />
       <workItem from="1636649644610" duration="187000" />
-      <workItem from="1636649852673" duration="8818000" />
+      <workItem from="1636649852673" duration="8974000" />
+      <workItem from="1636735541733" duration="5667000" />
+      <workItem from="1636747487687" duration="2387000" />
+      <workItem from="1636749954075" duration="1291000" />
+      <workItem from="1636791942193" duration="839000" />
+      <workItem from="1636792952796" duration="661000" />
+      <workItem from="1636793750354" duration="420000" />
+      <workItem from="1636794249853" duration="210000" />
+      <workItem from="1636795595169" duration="576000" />
     </task>
     <task id="LOCAL-00001" summary="DR-2001: created weather app">
       <created>1635347829701</created>
@@ -162,17 +166,17 @@
     <option name="LAST_COMMIT_MESSAGE" value="DR-2001: created weather app" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="549" y="168" key="FileChooserDialogImpl" timestamp="1636105449800">
+    <state x="549" y="168" key="FileChooserDialogImpl" timestamp="1636794460048">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="168" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1636105449800" />
+    <state x="549" y="168" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1636794460048" />
     <state x="567" y="103" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1636650189354">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="567" y="103" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.824@0.0.1536.824" timestamp="1636650189354" />
-    <state x="425" y="187" key="run.anything.popup" timestamp="1636656258558">
+    <state x="425" y="187" key="run.anything.popup" timestamp="1636793406215">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1636656258558" />
+    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1636793406215" />
   </component>
 </project>

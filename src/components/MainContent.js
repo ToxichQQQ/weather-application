@@ -2,6 +2,7 @@ import React from "react";
 import { Button, Grid, makeStyles } from "@material-ui/core";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import moment from "moment";
+import { addNewCity } from "../localhost";
 
 const useStyles = makeStyles((them) => ({
   container: {
@@ -17,7 +18,7 @@ const useStyles = makeStyles((them) => ({
   },
 }));
 
-export const MainContent = ({ cityInfo, saveNewCity }) => {
+export const MainContent = ({ cityInfo, city, setSavedCities }) => {
   const classes = useStyles();
 
   const getWeatherInfo = () => {
@@ -28,6 +29,19 @@ export const MainContent = ({ cityInfo, saveNewCity }) => {
     };
   };
 
+  const addNewCityAPI = () => {
+    fetch(addNewCity, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        username: localStorage.getItem("userName"),
+        cityName: city,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => data.message || setSavedCities(data));
+  };
+
   return (
     <Grid
       container
@@ -35,7 +49,7 @@ export const MainContent = ({ cityInfo, saveNewCity }) => {
       alignItems="center"
       className={classes.container}
     >
-      <Button className={classes.addCityButton} onClick={() => saveNewCity()}>
+      <Button className={classes.addCityButton} onClick={() => addNewCityAPI()}>
         <AddCircleOutlineIcon />
       </Button>
       <Grid

@@ -16,11 +16,16 @@ export const TodayWeather = ({ location, isToday }) => {
     )
       .then((response) => response.json())
       .then((data) => {
-        setDate(moment.unix(data.daily[isToday ? 0 : 1].dt).format("MMMM Do "));
-        setWeekWeather(data);
-        setLoading(false);
-      })
-      .catch((err) => alert("Error"));
+        if (!data.message) {
+          setDate(
+            moment.unix(data.daily[isToday ? 0 : 1].dt).format("MMMM Do ")
+          );
+          setWeekWeather(data);
+          setLoading(false);
+        } else {
+          alert(data.message);
+        }
+      });
   }, [location]);
 
   const getWeatherInfoByTime = (i) => {

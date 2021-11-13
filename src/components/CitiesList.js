@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Grid, Typography, makeStyles } from "@material-ui/core";
 import CloseIcon from "@mui/icons-material/Close";
+import { deleteCity } from "../localhost";
 
 const useStyles = makeStyles((them) => ({
   container: {},
@@ -38,9 +39,22 @@ const useStyles = makeStyles((them) => ({
 export const CitiesList = ({
   setSelectedCity,
   savedCities,
-  clearCity,
+  setSavedCities,
 }) => {
   const classes = useStyles();
+
+  const updateCitiesList = (cityId) => {
+    fetch(deleteCity, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        username: localStorage.getItem("userName"),
+        cityId: cityId,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => data.message || setSavedCities(data));
+  };
 
   return (
     <Grid container justifyContent="center" alignItems="center">
@@ -56,24 +70,24 @@ export const CitiesList = ({
           alignItems="center"
           className={classes.savedCities}
         >
-          {savedCities.map((card, index) => (
+          {savedCities.map((card) => (
             <Grid
               item
-              key={index}
+              key={card._id}
               className={classes.listItem}
-              onClick={() => card.name && setSelectedCity(card.name)}
+              onClick={() => setSelectedCity(card.cityName)}
             >
               <Grid container justifyContent="flex-end">
                 <CloseIcon
                   fontSize="small"
                   sx={{ color: "black" }}
                   className={classes.deleteButton}
-                  onClick={clearCity(index)}
+                  onClick={() => updateCitiesList(card._id)}
                 />
               </Grid>
               <Grid container justifyContent="center" alignItems="center">
                 <Grid item xs={12} className={classes.cardText}>
-                  <span>{card.name}</span>
+                  <span>{card.cityName}</span>
                 </Grid>
               </Grid>
             </Grid>
