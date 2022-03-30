@@ -2,24 +2,50 @@ import React, { useEffect, useState } from "react";
 import { Button, Grid, TextField } from "@mui/material";
 import { NavLink } from "react-router-dom";
 import { makeStyles } from "@material-ui/core";
-import HomeIcon from "@mui/icons-material/Home";
-import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 
 const useStyles = makeStyles((them) => ({
   container: {
-    padding: "0 0 20px ",
-    borderBottom: "1px solid grey",
+    padding: "20px 25px",
   },
   navLinkItem: {
-    color: "grey",
+    fontFamily:'Quicksand',
+    fontWeight:600,
+    fontSize:30,
+    color: "#160521AB",
     cursor: "pointer",
     textDecoration: "none",
+  },
+  searchInput:{
+    marginRight:'10px !important',
+    '& .MuiOutlinedInput-root':{
+      borderRadius:'15px',
+      width: 270,
+      borderColor:'#7F6290F2 !important',
+      height:55,
+      '& .MuiOutlinedInput-input':{
+        textTransform:'uppercase',
+        textShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+        color:'#1605218A',
+        fontFamily: 'Quicksand',
+        letterSpacing: '0.25em'
+      }
+    }
   },
   homeIcon: {
     marginTop: 5,
   },
+  searchButton:{
+    backgroundColor:'#4F1E76 !important',
+    borderColor:'#7F6290F2  !important',
+    borderRadius:'15px !important',
+    color:'#DAD6DC !important',
+    fontWeight: '400 !important',
+    fontSize: '15px !important',
+    padding:'15px 21px !important',
+    letterSpacing: '0.25em !important'
+  }
 }));
-export const Navbar = ({ userName, setSelectedCity }) => {
+export const Navbar = ({ setSelectedCity }) => {
   const [searchValue, setSearchValue] = useState("");
   const classes = useStyles();
   const [token, setToken] = useState(
@@ -34,7 +60,8 @@ export const Navbar = ({ userName, setSelectedCity }) => {
 
   const handleExit = () => {
     localStorage.removeItem("token");
-    setToken(undefined);
+    setToken(
+        undefined);
   };
 
   return (
@@ -44,7 +71,7 @@ export const Navbar = ({ userName, setSelectedCity }) => {
       alignItems="center"
       className={classes.container}
     >
-      <Grid item xs={3}>
+      <Grid item xs={6}>
         <Grid container justifyContent="space-between" alignItems="center">
           <NavLink to="/main" className={classes.navLinkItem}>
             Home
@@ -64,20 +91,20 @@ export const Navbar = ({ userName, setSelectedCity }) => {
         </Grid>
       </Grid>
       <Grid item xs={6}>
-        <Grid container justifyContent="flex-end">
+        <Grid container justifyContent="flex-end" alignItems='center'>
           <TextField
             onChange={(e) => {
               const value = e.currentTarget.value.replace(/[^a-zA-Z ]+/g, "");
               setSearchValue(value);
             }}
-            label="Find the city"
+           placeholder='Find the city'
             size="small"
+            className={classes.searchInput}
             value={searchValue}
           />
           <Button
-            color="primary"
-            variant="outlined"
             onClick={() => setSelectedCity(searchValue)}
+            className={classes.searchButton}
           >
             Search
           </Button>

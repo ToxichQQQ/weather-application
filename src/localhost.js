@@ -1,6 +1,8 @@
-export const singInLink = "http://localhost:9000/auth/login";
-export const registrationLink = "http://localhost:9000/auth/registration";
-export const getAllUsers = "http://localhost:9000/auth/users";
-export const getCities = "http://localhost:9000/auth/cities/";
-export const addNewCity = "http://localhost:9000/auth/cities/add";
-export const deleteCity = "http://localhost:9000/auth/cities/delete";
+import {localhost} from "./config";
+
+export const singInLink = `${localhost}/login`
+export const registrationLink = `${localhost}/registration`;
+export const getAllUsers = `${localhost}/users`;
+export const getCities = `${localhost}/cities/`;
+export const addNewCity = `${localhost}/cities/add`;
+export const deleteCity = `${localhost}/cities/delete`;

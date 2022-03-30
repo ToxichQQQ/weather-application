@@ -57,9 +57,7 @@ export const LoginPage = () => {
   const classes = useStyles();
   const [errorMessage, setErrorMessage] = useState("");
   const [open, setOpen] = useState(false);
-  const [token, setToken] = useState(
-    localStorage.getItem("token") || undefined
-  );
+
   const formik = useFormik({
     initialValues: {
       userName: "",
@@ -89,7 +87,7 @@ export const LoginPage = () => {
   });
 
   useEffect(() => {
-    if (token) {
+    if (localStorage.getItem("token")) {
       window.location.href = "main";
     }
   }, []);

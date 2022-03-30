@@ -23,14 +23,12 @@ export const WeekWeather = ({ location }) => {
   const [weekWeather, setWeekWeather] = useState();
   const [date, setDate] = useState(null);
   const [loading, setLoading] = useState(true);
-
   useEffect(() => {
     fetch(
       `https://api.openweathermap.org/data/2.5/onecall?lat=${location.lat}&lon=${location.lon}&appid=${API_KEY}`
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         setDate(
           `${moment.unix(data.daily[0].dt).format("MMMM Do")} - ${moment
             .unix(data.daily[7].dt)
@@ -45,7 +43,7 @@ export const WeekWeather = ({ location }) => {
   const getWeatherInfoByDay = (i) => {
     return {
       time: moment.unix(weekWeather.daily[i].dt).format("MMMM Do"),
-      temp: (weekWeather.daily[i].temp.day - 273.15).toFixed(2),
+      temp: (weekWeather.daily[i].temp.day - 273.15).toFixed(1),
       desc: weekWeather.daily[i].weather[0].main,
       wind: "Wind - " + weekWeather.daily[i].wind_speed.toFixed(1) + " m/s",
     };
@@ -54,23 +52,24 @@ export const WeekWeather = ({ location }) => {
   return (
     <>
       {!loading && (
-        <Grid container>
-          <Grid item xs={12}>
+        <Grid container justify='center'>
+          <Grid item xs={12} style={{textAlign:'center',marginBottom:'20px'}}>
             <Typography variant="h5" component="h5">
               Week
             </Typography>
             <p>{date}</p>
           </Grid>
-          <Grid item>
+          <Grid>
             <Grid container justifyContent="space-between" alignItems="center">
               {weekWeather.daily.map((day, index) => (
-                <Grid item className={classes.listItem}>
+                <Grid key={day.dt} item className={classes.listItem}>
                   <Grid
                     container
                     alignItems="center"
                     justifyContent="space-between"
                     direction="column"
                   >
+                    <img src={`http://openweathermap.org/img/wn/${day.weather[0].icon}.png`} alt='weatherImg'/>
                     <p>{getWeatherInfoByDay(index).time}</p>
                     <p>{getWeatherInfoByDay(index).temp}&#8451;</p>
                     <p>{getWeatherInfoByDay(index).desc}</p>
