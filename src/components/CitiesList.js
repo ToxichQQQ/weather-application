@@ -3,7 +3,7 @@ import { Grid, Typography, makeStyles } from "@material-ui/core";
 import { deleteCity } from "../localhost";
 import cityImg from "../images/cityImage.png"
 
-const useStyles = makeStyles((them) => ({
+const useStyles = makeStyles(() => ({
   container: {
     flex:'1 1',
     borderTopLeftRadius:'36px',

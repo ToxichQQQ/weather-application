@@ -23,20 +23,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="afee9076-d05c-41a8-a418-2f2fe6c9549e" name="Changes" comment="DR-2001: created weather app">
-      <change afterPath="$PROJECT_DIR$/public/main.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/cityImage.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/CitiesList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CitiesList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/MainContent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MainContent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Navbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Navbar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/WeekWeather.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/WeekWeather.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/localhost.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/localhost.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/LoginPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/LoginPage.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -157,7 +145,8 @@
       <workItem from="1644168139339" duration="9000" />
       <workItem from="1644168273288" duration="873000" />
       <workItem from="1644228363576" duration="1301000" />
-      <workItem from="1648662389343" duration="10546000" />
+      <workItem from="1648662389343" duration="11837000" />
+      <workItem from="1648751498433" duration="934000" />
     </task>
     <task id="LOCAL-00001" summary="DR-2001: created weather app">
       <created>1635347829701</created>
