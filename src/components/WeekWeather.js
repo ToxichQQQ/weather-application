@@ -4,8 +4,36 @@ import { Typography } from "@mui/material";
 import { API_KEY } from "../config";
 import moment from "moment";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
+  container:{
+    flex:'1 1',
+    borderTopLeftRadius:'36px',
+    borderTopRightRadius:'36px',
+    backgroundColor:'#4F1E76',
+  },
+  header:{
+    paddingTop:20,
+    textAlign: "center",
+    color:'#DAD6DC',
+    fontSize:'48px !important',
+    fontWeight:'600 !important',
+    textTransform:'uppercase',
+    letterSpacing: '0.25em !important',
+    textShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+    fontFamily:'Quicksand !important',
+  },
+  dateText:{
+    color:'#DAD6DC',
+    fontSize:18,
+    marginTop:'7px',
+    marginBottom:0,
+    textTransform:'uppercase',
+    fontFamily:'Quicksand',
+  },
   listItem: {
+    fontFamily:'Quicksand',
+    backgroundColor:'#FFFFFF',
+    borderRadius:20,
     flex: "1 1 10%",
     minHeight: "150px",
     minWidth: "150px",
@@ -16,6 +44,24 @@ const useStyles = makeStyles((theme) => ({
       margin: "0 0 10px",
     },
   },
+  cardDate:{
+    color:'#160521AB',
+    fontSize:30,
+    fontWeight:600
+  },
+  cardTemp:{
+  fontSize:36,
+    color:'#160521AB',
+
+  },
+  cardDesc:{
+  fontSize:15,
+    textTransform:'uppercase',
+    color:'#1605218A'
+  },
+  weekWeatherText:{
+    textAlign:'center'
+  }
 }));
 
 export const WeekWeather = ({ location }) => {
@@ -43,21 +89,20 @@ export const WeekWeather = ({ location }) => {
   const getWeatherInfoByDay = (i) => {
     return {
       time: moment.unix(weekWeather.daily[i].dt).format("MMMM Do"),
-      temp: (weekWeather.daily[i].temp.day - 273.15).toFixed(1),
+      temp: (weekWeather.daily[i].temp.day - 273.15).toFixed(0),
       desc: weekWeather.daily[i].weather[0].main,
-      wind: "Wind - " + weekWeather.daily[i].wind_speed.toFixed(1) + " m/s",
     };
   };
 
   return (
     <>
       {!loading && (
-        <Grid container justify='center'>
-          <Grid item xs={12} style={{textAlign:'center',marginBottom:'20px'}}>
-            <Typography variant="h5" component="h5">
+        <Grid container justify='center' className={classes.container}>
+          <Grid item xs={12} className={classes.weekWeatherText} >
+            <Typography variant="h5" component="h5" className={classes.header}>
               Week
             </Typography>
-            <p>{date}</p>
+            <p className={classes.dateText}>{date}</p>
           </Grid>
           <Grid>
             <Grid container justifyContent="space-between" alignItems="center">
@@ -69,11 +114,10 @@ export const WeekWeather = ({ location }) => {
                     justifyContent="space-between"
                     direction="column"
                   >
+                    <p className={classes.cardDate}>{getWeatherInfoByDay(index).time}</p>
+                    <p className={classes.cardDesc}>{getWeatherInfoByDay(index).desc}</p>
+                    <p className={classes.cardTemp}>{getWeatherInfoByDay(index).temp}</p>
                     <img src={`http://openweathermap.org/img/wn/${day.weather[0].icon}.png`} alt='weatherImg'/>
-                    <p>{getWeatherInfoByDay(index).time}</p>
-                    <p>{getWeatherInfoByDay(index).temp}&#8451;</p>
-                    <p>{getWeatherInfoByDay(index).desc}</p>
-                    <p>{getWeatherInfoByDay(index).wind}</p>
                   </Grid>
                 </Grid>
               ))}

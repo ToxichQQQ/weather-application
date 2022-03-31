@@ -24,7 +24,7 @@
   <component name="ChangeListManager">
     <list default="true" id="afee9076-d05c-41a8-a418-2f2fe6c9549e" name="Changes" comment="DR-2001: created weather app">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CitiesList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CitiesList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/WeekWeather.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/WeekWeather.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,7 +146,7 @@
       <workItem from="1644168273288" duration="873000" />
       <workItem from="1644228363576" duration="1301000" />
       <workItem from="1648662389343" duration="11837000" />
-      <workItem from="1648751498433" duration="934000" />
+      <workItem from="1648751498433" duration="2476000" />
     </task>
     <task id="LOCAL-00001" summary="DR-2001: created weather app">
       <created>1635347829701</created>
