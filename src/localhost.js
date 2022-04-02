@@ -1,6 +1,6 @@
-import {localhost} from "./config";
+import { localhost } from "./config";
 
-export const singInLink = `${localhost}/login`
+export const singInLink = `${localhost}/login`;
 export const registrationLink = `${localhost}/registration`;
 export const getAllUsers = `${localhost}/users`;
 export const getCities = `${localhost}/cities/`;

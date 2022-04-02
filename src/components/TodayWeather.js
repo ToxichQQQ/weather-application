@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Grid, Table, TableCell, TableHead, TableRow } from "@material-ui/core";
 import { Paper, TableBody, TableContainer, Typography } from "@mui/material";
 import moment from "moment";
-import Iframe from "react-iframe";
 import { API_KEY } from "../config";
 
 export const TodayWeather = ({ location, isToday }) => {

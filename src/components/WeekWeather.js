@@ -5,35 +5,35 @@ import { API_KEY } from "../config";
 import moment from "moment";
 
 const useStyles = makeStyles(() => ({
-  container:{
-    flex:'1 1',
-    borderTopLeftRadius:'36px',
-    borderTopRightRadius:'36px',
-    backgroundColor:'#4F1E76',
+  container: {
+    flex: "1 1",
+    borderTopLeftRadius: "36px",
+    borderTopRightRadius: "36px",
+    backgroundColor: "#4F1E76",
   },
-  header:{
-    paddingTop:20,
+  header: {
+    paddingTop: 20,
     textAlign: "center",
-    color:'#DAD6DC',
-    fontSize:'48px !important',
-    fontWeight:'600 !important',
-    textTransform:'uppercase',
-    letterSpacing: '0.25em !important',
-    textShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
-    fontFamily:'Quicksand !important',
+    color: "#DAD6DC",
+    fontSize: "48px !important",
+    fontWeight: "600 !important",
+    textTransform: "uppercase",
+    letterSpacing: "0.25em !important",
+    textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+    fontFamily: "Quicksand !important",
   },
-  dateText:{
-    color:'#DAD6DC',
-    fontSize:18,
-    marginTop:'7px',
-    marginBottom:0,
-    textTransform:'uppercase',
-    fontFamily:'Quicksand',
+  dateText: {
+    color: "#DAD6DC",
+    fontSize: 18,
+    marginTop: "7px",
+    marginBottom: 0,
+    textTransform: "uppercase",
+    fontFamily: "Quicksand",
   },
   listItem: {
-    fontFamily:'Quicksand',
-    backgroundColor:'#FFFFFF',
-    borderRadius:20,
+    fontFamily: "Quicksand",
+    backgroundColor: "#FFFFFF",
+    borderRadius: 20,
     flex: "1 1 10%",
     minHeight: "150px",
     minWidth: "150px",
@@ -44,24 +44,23 @@ const useStyles = makeStyles(() => ({
       margin: "0 0 10px",
     },
   },
-  cardDate:{
-    color:'#160521AB',
-    fontSize:30,
-    fontWeight:600
+  cardDate: {
+    color: "#160521AB",
+    fontSize: 30,
+    fontWeight: 600,
   },
-  cardTemp:{
-  fontSize:36,
-    color:'#160521AB',
-
+  cardTemp: {
+    fontSize: 36,
+    color: "#160521AB",
   },
-  cardDesc:{
-  fontSize:15,
-    textTransform:'uppercase',
-    color:'#1605218A'
+  cardDesc: {
+    fontSize: 15,
+    textTransform: "uppercase",
+    color: "#1605218A",
   },
-  weekWeatherText:{
-    textAlign:'center'
-  }
+  weekWeatherText: {
+    textAlign: "center",
+  },
 }));
 
 export const WeekWeather = ({ location }) => {
@@ -97,8 +96,8 @@ export const WeekWeather = ({ location }) => {
   return (
     <>
       {!loading && (
-        <Grid container justify='center' className={classes.container}>
-          <Grid item xs={12} className={classes.weekWeatherText} >
+        <Grid container justify="center" className={classes.container}>
+          <Grid item xs={12} className={classes.weekWeatherText}>
             <Typography variant="h5" component="h5" className={classes.header}>
               Week
             </Typography>
@@ -114,10 +113,19 @@ export const WeekWeather = ({ location }) => {
                     justifyContent="space-between"
                     direction="column"
                   >
-                    <p className={classes.cardDate}>{getWeatherInfoByDay(index).time}</p>
-                    <p className={classes.cardDesc}>{getWeatherInfoByDay(index).desc}</p>
-                    <p className={classes.cardTemp}>{getWeatherInfoByDay(index).temp}</p>
-                    <img src={`http://openweathermap.org/img/wn/${day.weather[0].icon}.png`} alt='weatherImg'/>
+                    <p className={classes.cardDate}>
+                      {getWeatherInfoByDay(index).time}
+                    </p>
+                    <p className={classes.cardDesc}>
+                      {getWeatherInfoByDay(index).desc}
+                    </p>
+                    <p className={classes.cardTemp}>
+                      {getWeatherInfoByDay(index).temp}
+                    </p>
+                    <img
+                      src={`http://openweathermap.org/img/wn/${day.weather[0].icon}.png`}
+                      alt="weatherImg"
+                    />
                   </Grid>
                 </Grid>
               ))}

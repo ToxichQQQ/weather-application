@@ -9,20 +9,19 @@ import { WeekWeather } from "./components/WeekWeather";
 import { RegistrationPage } from "./pages/RegistrationPage";
 import { LoginPage } from "./pages/LoginPage";
 import { getCities } from "./localhost";
-import {makeStyles} from "@material-ui/core";
-
+import { makeStyles } from "@material-ui/core";
+import Redirect from "react-router-dom/es/Redirect";
 
 const useStyles = makeStyles((them) => ({
-    container:{
-        display:'flex',
-        flexDirection:'column',
-        height:'100vh'
-    }
-}))
-
+  container: {
+    display: "flex",
+    flexDirection: "column",
+    height: "100vh",
+  },
+}));
 
 export const App = () => {
-    const classes = useStyles()
+  const classes = useStyles();
   const [selectedCity, setSelectedCity] = useState("Moscow");
   const [cityInfo, setCityInfo] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -93,8 +92,15 @@ export const App = () => {
         <Route exact path="/login">
           <LoginPage setUserName={setUserName} />
         </Route>
+          <Route path='/'>
+              <Redirect to='/main'/>
+          </Route>
         <Route path="/main">
-          <Navbar userName={userName} setSelectedCity={setSelectedCity} />
+          <Navbar
+            userName={userName}
+            setSelectedCity={setSelectedCity}
+            city={selectedCity}
+          />
           <MainContent
             city={selectedCity}
             setSavedCities={setSavedCities}
@@ -108,12 +114,10 @@ export const App = () => {
           />
         </Route>
         <Route path="/today">
-          <Navbar setSelectedCity={setSelectedCity} />
-          <MainContent
+          <Navbar
+            setSelectedCity={setSelectedCity}
+            isToday
             city={selectedCity}
-            cityInfo={cityInfo}
-            setSavedCities={setSavedCities}
-            savedCities={savedCities}
           />
           <TodayWeather
             getCityInformation={getCityInformation}
@@ -123,28 +127,14 @@ export const App = () => {
             isToday
           />
         </Route>
-        <Route path="/tomorrow">
-          <Navbar setSelectedCity={setSelectedCity} />
+        <Route path="/week">
+          <Navbar setSelectedCity={setSelectedCity} city={selectedCity} />
           <MainContent
             city={selectedCity}
             cityInfo={cityInfo}
             setSavedCities={setSavedCities}
             savedCities={savedCities}
           />
-          <TodayWeather
-            getCityInformation={getCityInformation}
-            location={location}
-            setCityInfo={setCityInfo}
-            cityInfo={cityInfo}
-            isToday={false}
-          />
-        </Route>
-        <Route path="/week">
-          <Navbar setSelectedCity={setSelectedCity} />
-          <MainContent  city={selectedCity}
-                        cityInfo={cityInfo}
-                        setSavedCities={setSavedCities}
-                        savedCities={savedCities}/>
           <WeekWeather
             getCityInformation={getCityInformation}
             location={location}

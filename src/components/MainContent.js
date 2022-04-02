@@ -3,34 +3,38 @@ import { Button, Grid, makeStyles } from "@material-ui/core";
 import { addNewCity } from "../localhost";
 
 const useStyles = makeStyles((them) => ({
-  container: {
-  },
+  container: {},
   mainContent: {
     padding: "30px 0",
   },
   addCityButton: {
-    border:'2px solid #4F1E76',
-    borderRadius:20,
-    padding:'9px 31px',
-    fontSize:18,
-    letterSpacing: '0.25em !important',
-    color:'#4F1E76'
+    border: "2px solid #4F1E76",
+    borderRadius: 20,
+    padding: "9px 31px",
+    fontSize: 18,
+    letterSpacing: "0.25em !important",
+    color: "#4F1E76",
   },
-  cityName:{
-    color:'#160521',
-    fontSize:35,
-    fontWeight:600
+  cityName: {
+    color: "#160521",
+    fontSize: 35,
+    fontWeight: 600,
   },
-  cityTemp:{
-color:'#959297',
-    fontSize:24,
+  cityTemp: {
+    color: "#959297",
+    fontSize: 24,
   },
-  contentItem:{
-    marginBottom:9
-  }
+  contentItem: {
+    marginBottom: 9,
+  },
 }));
 
-export const MainContent = ({savedCities,cityInfo, city, setSavedCities }) => {
+export const MainContent = ({
+  savedCities,
+  cityInfo,
+  city,
+  setSavedCities,
+}) => {
   const classes = useStyles();
 
   const getWeatherInfo = () => {
@@ -42,7 +46,7 @@ export const MainContent = ({savedCities,cityInfo, city, setSavedCities }) => {
   };
 
   const addNewCityAPI = () => {
-    if (savedCities.length >= 8) return false
+    if (savedCities.length >= 8) return false;
     fetch(addNewCity, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
@@ -69,9 +73,16 @@ export const MainContent = ({savedCities,cityInfo, city, setSavedCities }) => {
         alignItems="center"
         className={classes.mainContent}
       >
-        <Grid item className={`${classes.contentItem} ${classes.cityName}`}>{getWeatherInfo().city}</Grid>
-        <Grid item className={`${classes.contentItem} ${classes.cityTemp}`}>{getWeatherInfo().temp}°C</Grid>
-        <Button className={`${classes.contentItem} ${classes.addCityButton}`} onClick={() => addNewCityAPI()}>
+        <Grid item className={`${classes.contentItem} ${classes.cityName}`}>
+          {getWeatherInfo().city}
+        </Grid>
+        <Grid item className={`${classes.contentItem} ${classes.cityTemp}`}>
+          {getWeatherInfo().temp}°C
+        </Grid>
+        <Button
+          className={`${classes.contentItem} ${classes.addCityButton}`}
+          onClick={() => addNewCityAPI()}
+        >
           Add
         </Button>
       </Grid>
