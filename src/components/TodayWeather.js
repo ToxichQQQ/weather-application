@@ -1,10 +1,26 @@
 import React, { useEffect, useState } from "react";
-import { Grid, Table, TableCell, TableHead, TableRow } from "@material-ui/core";
-import { Paper, TableBody, TableContainer, Typography } from "@mui/material";
+import {Grid, makeStyles, Table, TableCell, TableHead, TableRow} from "@material-ui/core";
+import { Paper, TableBody, TableContainer, ListItem,List, Typography} from "@mui/material";
 import moment from "moment";
 import { API_KEY } from "../config";
 
+const useStyles = makeStyles(() => ({
+  list:{
+
+  },
+  listItem:{
+  display:'flex !important',
+    flexDirection:'column'
+  },
+  listItemHeader:{
+
+  },
+  listItemText:{
+  }
+}));
+
 export const TodayWeather = ({ location, isToday }) => {
+  const classes = useStyles()
   const [weekWeather, setWeekWeather] = useState();
   const [date, setDate] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -38,14 +54,21 @@ export const TodayWeather = ({ location, isToday }) => {
   return (
     <Grid>
       {!loading && (
-        <Grid item>
-          <Grid item>
-            <Typography variant="h4" component="h4">
-              {isToday ? "Today" : "Tomorrow"}
-            </Typography>
-            <p>{date}</p>
+        <Grid container>
+          <Grid item xs={2}>
+          <List>
+            <ListItem className={classes.listItem}><Typography className={classes.listItemHeader} component='h5' variant='h5'>Now</Typography>
+            <p className={classes.listItemText}>{getWeatherInfoByTime(3).time}</p>
+            </ListItem>
+            <ListItem className={classes.listItem}><Typography className={classes.listItemHeader} component='h5' variant='h5'>Later</Typography>
+              <p className={classes.listItemText}>{getWeatherInfoByTime(6).time}</p>
+            </ListItem>
+            <ListItem className={classes.listItem}><Typography className={classes.listItemHeader} component='h5' variant='h5'>Later</Typography>
+              <p className={classes.listItemText}>{getWeatherInfoByTime(9).time}</p>
+            </ListItem>
+          </List>
           </Grid>
-          <Grid item xs={4}>
+          <Grid item xs={10}>
             <TableContainer component={Paper}>
               <Table
                 sx={{ maxWidth: 650 }}
@@ -61,7 +84,7 @@ export const TodayWeather = ({ location, isToday }) => {
                 <TableBody>
                   <TableRow>
                     <TableCell>
-                      {isToday ? getWeatherInfoByTime(3).time : "10:00"}
+
                     </TableCell>
                     <TableCell>
                       {getWeatherInfoByTime(isToday ? 3 : 24).temp}&#8451;{" "}

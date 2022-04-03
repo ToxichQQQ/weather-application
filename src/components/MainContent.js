@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Grid, makeStyles } from "@material-ui/core";
 import { addNewCity } from "../localhost";
 
-const useStyles = makeStyles((them) => ({
+const useStyles = makeStyles(() => ({
   container: {},
   mainContent: {
     padding: "30px 0",
