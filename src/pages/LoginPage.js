@@ -88,7 +88,7 @@ export const LoginPage = () => {
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
-      window.location.href = "main";
+      setTimeout(() => window.location.href = "main", 3000);
     }
   }, []);
 

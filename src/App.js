@@ -22,14 +22,19 @@ const useStyles = makeStyles((them) => ({
 
 export const App = () => {
   const classes = useStyles();
+  const [date, setDate] = useState(null);
   const [selectedCity, setSelectedCity] = useState("Moscow");
   const [cityInfo, setCityInfo] = useState([]);
   const [loading, setLoading] = useState(true);
   const [userName, setUserName] = useState(
     localStorage.getItem("userName") || undefined
   );
+
   const [location, setLocation] = useState();
   const [savedCities, setSavedCities] = useState([]);
+    const [token, setToken] = useState(
+        localStorage.getItem("token")
+    );
 
   const getCityInformation = (
     URL = `https://api.openweathermap.org/data/2.5/weather?q=${selectedCity}&appid=${API_KEY}`
@@ -89,14 +94,13 @@ export const App = () => {
         <Route path="/registration">
           <RegistrationPage />
         </Route>
-        <Route exact path="/login">
+        <Route path="/login">
           <LoginPage setUserName={setUserName} />
         </Route>
-          <Route path='/'>
-              <Redirect to='/main'/>
-          </Route>
         <Route path="/main">
           <Navbar
+              token={token}
+              setToken={setToken}
             userName={userName}
             setSelectedCity={setSelectedCity}
             city={selectedCity}
@@ -115,11 +119,16 @@ export const App = () => {
         </Route>
         <Route path="/today">
           <Navbar
+              date={date}
+              token={token}
+              setToken={setToken}
             setSelectedCity={setSelectedCity}
             isToday
             city={selectedCity}
           />
           <TodayWeather
+              date={date}
+              setDate={setDate}
             getCityInformation={getCityInformation}
             location={location}
             setCityInfo={setCityInfo}
@@ -128,7 +137,8 @@ export const App = () => {
           />
         </Route>
         <Route path="/week">
-          <Navbar setSelectedCity={setSelectedCity} city={selectedCity} />
+          <Navbar setSelectedCity={setSelectedCity} city={selectedCity} token={token}
+                  setToken={setToken}/>
           <MainContent
             city={selectedCity}
             cityInfo={cityInfo}

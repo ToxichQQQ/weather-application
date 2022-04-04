@@ -35,6 +35,7 @@ const useStyles = makeStyles((them) => ({
   },
   homeIconContainer: {
     border: "2px solid rgba(79, 30, 118, 0.6)",
+    marginLeft:'60px !important',
     borderRadius: "50%",
     fontSize: 16,
   },
@@ -64,12 +65,9 @@ const useStyles = makeStyles((them) => ({
     margin: 0,
   },
 }));
-export const Navbar = ({ setSelectedCity, isToday, city }) => {
+export const Navbar = ({ setSelectedCity, isToday, city,token,setToken,date}) => {
   const [searchValue, setSearchValue] = useState("");
   const classes = useStyles();
-  const [token, setToken] = useState(
-    localStorage.getItem("token") || undefined
-  );
 
   useEffect(() => {
     if (!token) {
@@ -100,7 +98,7 @@ export const Navbar = ({ setSelectedCity, isToday, city }) => {
             <Grid item>
               <h2 className={classes.cityName}>{city}</h2>
               <p className={classes.weekDay}>
-                {moment.unix(new Date().getTime()).format("MMMM Do ")}
+                {date}
               </p>
             </Grid>
           </Grid>

@@ -46,7 +46,7 @@ const useStyles = makeStyles(() => ({
   },
   cardDate: {
     color: "#160521AB",
-    fontSize: 30,
+    fontSize: 28,
     fontWeight: 600,
   },
   cardTemp: {
