@@ -1,10 +1,10 @@
-# Getting Started with Create React App
+# Weather Application 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This application can display the weather forecast in the selected city for one day or for a whole week. We can also save cities in our personal profile
 
-## Available Scripts
+### Start page
 
-In the project directory, you can run:
+![Image]
 
 ### `npm start`
 
