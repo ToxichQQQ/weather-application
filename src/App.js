@@ -32,9 +32,7 @@ export const App = () => {
 
   const [location, setLocation] = useState();
   const [savedCities, setSavedCities] = useState([]);
-    const [token, setToken] = useState(
-        localStorage.getItem("token")
-    );
+  const [token, setToken] = useState(localStorage.getItem("token"));
 
   const getCityInformation = (
     URL = `https://api.openweathermap.org/data/2.5/weather?q=${selectedCity}&appid=${API_KEY}`
@@ -99,8 +97,8 @@ export const App = () => {
         </Route>
         <Route path="/main">
           <Navbar
-              token={token}
-              setToken={setToken}
+            token={token}
+            setToken={setToken}
             userName={userName}
             setSelectedCity={setSelectedCity}
             city={selectedCity}
@@ -119,16 +117,16 @@ export const App = () => {
         </Route>
         <Route path="/today">
           <Navbar
-              date={date}
-              token={token}
-              setToken={setToken}
+            date={date}
+            token={token}
+            setToken={setToken}
             setSelectedCity={setSelectedCity}
             isToday
             city={selectedCity}
           />
           <TodayWeather
-              date={date}
-              setDate={setDate}
+            date={date}
+            setDate={setDate}
             getCityInformation={getCityInformation}
             location={location}
             setCityInfo={setCityInfo}
@@ -137,8 +135,12 @@ export const App = () => {
           />
         </Route>
         <Route path="/week">
-          <Navbar setSelectedCity={setSelectedCity} city={selectedCity} token={token}
-                  setToken={setToken}/>
+          <Navbar
+            setSelectedCity={setSelectedCity}
+            city={selectedCity}
+            token={token}
+            setToken={setToken}
+          />
           <MainContent
             city={selectedCity}
             cityInfo={cityInfo}

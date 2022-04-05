@@ -35,7 +35,7 @@ const useStyles = makeStyles((them) => ({
   },
   homeIconContainer: {
     border: "2px solid rgba(79, 30, 118, 0.6)",
-    marginLeft:'60px !important',
+    marginLeft: "60px !important",
     borderRadius: "50%",
     fontSize: 16,
   },
@@ -65,7 +65,14 @@ const useStyles = makeStyles((them) => ({
     margin: 0,
   },
 }));
-export const Navbar = ({ setSelectedCity, isToday, city,token,setToken,date}) => {
+export const Navbar = ({
+  setSelectedCity,
+  isToday,
+  city,
+  token,
+  setToken,
+  date,
+}) => {
   const [searchValue, setSearchValue] = useState("");
   const classes = useStyles();
 
@@ -97,9 +104,7 @@ export const Navbar = ({ setSelectedCity, isToday, city,token,setToken,date}) =>
             </NavLink>
             <Grid item>
               <h2 className={classes.cityName}>{city}</h2>
-              <p className={classes.weekDay}>
-                {date}
-              </p>
+              <p className={classes.weekDay}>{date}</p>
             </Grid>
           </Grid>
         ) : (
